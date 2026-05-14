@@ -44,7 +44,13 @@ export async function POST(request: Request) {
 
     const response = await fetch(web3Forms.endpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: { 
+        "Content-Type": "application/json", 
+        "Accept": "application/json",
+        "User-Agent": "Lynx Climbing Website/1.0",
+        "Origin": "https://lynx-climbing.vercel.app",
+        "Referer": "https://lynx-climbing.vercel.app/",
+      },
       body: JSON.stringify(payload),
       cache: "no-store",
     })

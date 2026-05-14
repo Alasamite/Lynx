@@ -286,8 +286,7 @@ export default function HomePage() {
         <PremiumHeroField />
         <LynxHeroScene />
         <div className="absolute inset-0 bg-gradient-to-b from-lynx-black/30 via-lynx-black/50 to-lynx-black" />
-        <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-4 pb-20 pt-28">
-          <Logo variant="full" size="hero" className="mb-8 hero-logo" />
+        <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-4 pb-20 pt-28 lg:max-w-[55%] lg:pr-8">
           <p className="text-xs uppercase tracking-[0.28em] text-lynx-stone">{t.hero.eyebrow}</p>
           <h1 className="mt-4 max-w-4xl text-5xl font-bold uppercase tracking-normal md:text-7xl">{t.hero.value}</h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-lynx-chalk/82">{t.hero.line}</p>

@@ -1,0 +1,20 @@
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:4000
+- Network:       http://0.0.0.0:4000
+✓ Ready in 1471ms
+
+ GET / 200 in 399ms (next.js: 190ms, application-code: 208ms)
+ GET / 200 in 56ms (next.js: 4ms, application-code: 52ms)
+ GET / 200 in 88ms (next.js: 5ms, application-code: 83ms)
+ GET / 200 in 157ms (next.js: 8ms, application-code: 149ms)
+ GET / 200 in 155ms (next.js: 9ms, application-code: 146ms)
+ GET / 200 in 150ms (next.js: 9ms, application-code: 141ms)
+ GET / 200 in 135ms (next.js: 7ms, application-code: 128ms)
+ GET / 200 in 150ms (next.js: 9ms, application-code: 141ms)
+ GET / 200 in 652ms (next.js: 213ms, application-code: 438ms)
+✓ Compiled in 262ms
+ GET / 200 in 415ms (next.js: 145ms, application-code: 269ms)
+ GET / 200 in 417ms (next.js: 129ms, application-code: 288ms)
+ GET / 200 in 798ms (next.js: 309ms, application-code: 489ms)
+✓ Compiled in 1638ms
+✓ Finished writing to filesystem cache in 13.3s

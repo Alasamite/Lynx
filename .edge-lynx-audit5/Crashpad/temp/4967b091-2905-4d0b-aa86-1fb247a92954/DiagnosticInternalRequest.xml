@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<req ver="2">
+ <tlm>
+  <src>
+   <desc>
+    <mach>
+     <os>
+      <arg nm="vermaj" val="10"/>
+      <arg nm="vermin" val="0"/>
+      <arg nm="verbld" val="26200"/>
+      <arg nm="vercsdbld" val="8457"/>
+      <arg nm="verqfe" val="8457"/>
+      <arg nm="csdbld" val="8457"/>
+      <arg nm="versp" val=""/>
+      <arg nm="arch" val="9"/>
+      <arg nm="lcid" val="2070"/>
+      <arg nm="geoid" val="193"/>
+      <arg nm="sku" val="48"/>
+      <arg nm="domain" val="0"/>
+      <arg nm="portos" val="0"/>
+      <arg nm="ram" val="16071"/>
+      <arg nm="svolsz" val="475"/>
+      <arg nm="wimbt" val="0"/>
+      <arg nm="blddt" val="240331"/>
+      <arg nm="bldtm" val="1435"/>
+      <arg nm="bldbrch" val="ge_release"/>
+      <arg nm="os" val="Windows"/>
+      <arg nm="osver" val="10.0.26100.8457.amd64fre.ge_release.240331-1435"/>
+      <arg nm="buildflightid" val=""/>
+      <arg nm="expid" val="RS:36476,FT:138ACC69,FT:23B387EF,FT:33975A61,FX:124117A5,FX:13024673,FX:13083122,FX:130BC36D,FX:130DD09D,FX:1312D799,FX:1318CA30,FX:1318CAEE,FX:1318CAEF,FX:1318CBED,FX:1318CBF1,FX:132C91AD,FX:132EB35F,FX:1332CF9E,FX:1334BE51,FX:134130B4,FX:1341E6FC,FX:13430B2D,FX:13438657,FX:1346A1BE,FX:1348784F,FX:13487A03,FX:134C7123,FX:134C797B,FX:134CF7C5,FX:134D23F5,FX:134D2447,FX:134D394A,FX:134E98E0,FX:134FA71B,"/>
+      <arg nm="edition" val="Professional"/>
+     </os>
+     <hw>
+      <arg nm="form" val="2"/>
+      <arg nm="arch" val="9"/>
+      <arg nm="deviceclass" val="Windows.Desktop"/>
+      <arg nm="sysmfg" val="Acer"/>
+      <arg nm="syspro" val="TravelMate P216-51-TCO"/>
+      <arg nm="bv" val="V1.20"/>
+      <arg nm="ram" val="16384"/>
+      <arg nm="proccnt" val="12"/>
+      <arg nm="proclsp" val="2611"/>
+      <arg nm="wscpusc" val="0"/>
+      <arg nm="wsdsksc" val="0"/>
+      <arg nm="wscpudn" val="13th Gen Intel(R) Core(TM) i7-1355U"/>
+      <arg nm="wsdgsc" val="0"/>
+      <arg nm="aoac" val="0"/>
+      <arg nm="bssku" val="0000000000000000"/>
+      <arg nm="chid" val="{bd85d939-057d-5b6b-a30d-9a5f78d036ba}"/>
+      <arg nm="sdksz" val="476"/>
+     </hw>
+     <ctrl>
+      <arg nm="tm" val="134231878495627890"/>
+      <arg nm="mid" val="341732BE-D96D-41DF-97CD-E149F691BFFB"/>
+      <arg nm="sample" val="91205194"/>
+      <arg nm="msft" val="0"/>
+      <arg nm="test" val="0"/>
+      <arg nm="scf" val="0"/>
+      <arg nm="commercialid" val=""/>
+      <arg nm="telemetry" val="Optional"/>
+     </ctrl>
+    </mach>
+   </desc>
+  </src>
+  <reqs>
+   <req key="1">
+    <namespace svc="watson" ptr="generic" gp="generic" app="msedge.exe">
+     <arg nm="p1" val="msedge.exe"/>
+     <arg nm="p2" val="148.0.3967.54"/>
+     <arg nm="p3" val="msedge.dll"/>
+     <arg nm="p4" val="148.0.3967.54"/>
+     <arg nm="p5" val="170018749"/>
+     <arg nm="p6" val="browser"/>
+     <arg nm="p7" val="0x80000003"/>
+     <arg nm="p8" val="0"/>
+    </namespace>
+    <ctrl>
+     <arg nm="reportid" val="4967b091-2905-4d0b-aa86-1fb247a92954"/>
+     <arg nm="procmeta.Channel" val=""/>
+     <arg nm="procmeta.MetricsClientId" val="aed8c2c5-1183-4579-9345-2c3e735c515d"/>
+     <arg nm="procmeta.MetricsClientIdHash" val="-8592487121606123717"/>
+     <arg nm="procmeta.MetricsSessionId" val="0"/>
+     <arg nm="procmeta.OfficialBuild" val="1"/>
+     <arg nm="procmeta.RuntimeVariationsSeedETag" val=""/>
+     <arg nm="procmeta.TPI" val="1"/>
+     <arg nm="procmeta.UXConfigCorrelationId" val=""/>
+     <arg nm="procmeta.VariationsSeedETag" val=""/>
+    </ctrl>
+    <cmd nm="event">
+     <arg nm="eventtype" val="crashpad_exp"/>
+     <arg nm="cat" val="generic"/>
+     <arg nm="p1" val="msedge.exe"/>
+     <arg nm="p2" val="148.0.3967.54"/>
+     <arg nm="p3" val="msedge.dll"/>
+     <arg nm="p4" val="148.0.3967.54"/>
+     <arg nm="p5" val="170018749"/>
+     <arg nm="p6" val="browser"/>
+     <arg nm="p7" val="0x80000003"/>
+     <arg nm="p8" val="0"/>
+     <arg nm="appsessionguid" val="0000681c-0002-001b-2371-6fa72ee3dc01"/>
+    </cmd>
+   </req>
+  </reqs>
+ </tlm>
+</req>

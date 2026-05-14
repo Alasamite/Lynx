@@ -1,0 +1,224 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Lynx Climbing Brand Colors */
+  --lynx-black: #050505;
+  --lynx-charcoal: #111111;
+  --lynx-graphite: #232323;
+  --lynx-chalk: #F2EFE7;
+  --lynx-granite: #7A7A74;
+  --lynx-forest: #12362A;
+  --lynx-purple: #2A1B3D;
+  --lynx-stone: #A89A7A;
+  
+  --background: #050505;
+  --foreground: #F2EFE7;
+  --card: #111111;
+  --card-foreground: #F2EFE7;
+  --popover: #111111;
+  --popover-foreground: #F2EFE7;
+  --primary: #12362A;
+  --primary-foreground: #F2EFE7;
+  --secondary: #232323;
+  --secondary-foreground: #F2EFE7;
+  --muted: #232323;
+  --muted-foreground: #7A7A74;
+  --accent: #2A1B3D;
+  --accent-foreground: #F2EFE7;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #F2EFE7;
+  --border: #232323;
+  --input: #232323;
+  --ring: #12362A;
+  --radius: 0.25rem;
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Lynx Brand Colors for Tailwind */
+  --color-lynx-black: #050505;
+  --color-lynx-charcoal: #111111;
+  --color-lynx-graphite: #232323;
+  --color-lynx-chalk: #F2EFE7;
+  --color-lynx-granite: #7A7A74;
+  --color-lynx-forest: #12362A;
+  --color-lynx-purple: #2A1B3D;
+  --color-lynx-stone: #A89A7A;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232323;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7A7A74;
+}
+
+/* Topographic pattern background */
+.topo-pattern {
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 40px,
+      rgba(122, 122, 116, 0.03) 40px,
+      rgba(122, 122, 116, 0.03) 41px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 40px,
+      rgba(122, 122, 116, 0.03) 40px,
+      rgba(122, 122, 116, 0.03) 41px
+    );
+}
+
+/* Angular clip paths */
+.clip-angular {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%);
+}
+
+.clip-angular-sm {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+
+.hero-logo {
+  filter: drop-shadow(0 18px 38px rgba(0, 0, 0, 0.62));
+}
+
+.logo-full {
+  filter: drop-shadow(0 20px 44px rgba(0, 0, 0, 0.66));
+}
+
+.logo-symbol {
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.46));
+}
+
+.logo-full img {
+  object-position: left center;
+}
+
+.hero-mineral-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 72% 28%, rgba(168, 154, 122, 0.13), transparent 24%),
+    radial-gradient(circle at 18% 76%, rgba(122, 122, 116, 0.1), transparent 22%),
+    linear-gradient(115deg, transparent 0 46%, rgba(242, 239, 231, 0.035) 46.4% 47%, transparent 47.4% 100%);
+}
+
+.hero-three-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.82;
+  mix-blend-mode: screen;
+}
+
+.hero-three-scene canvas {
+  pointer-events: none;
+}
+
+.hero-shard {
+  position: absolute;
+  display: block;
+  border: 1px solid rgba(168, 154, 122, 0.18);
+  background: linear-gradient(145deg, rgba(242, 239, 231, 0.07), rgba(18, 54, 42, 0.1));
+  clip-path: polygon(12% 8%, 88% 0, 100% 62%, 58% 100%, 0 78%);
+  transform-origin: center;
+  animation: mineral-drift 18s ease-in-out infinite alternate;
+}
+
+.hero-shard-a {
+  right: 8%;
+  top: 20%;
+  width: clamp(150px, 18vw, 280px);
+  aspect-ratio: 1.15;
+}
+
+.hero-shard-b {
+  right: 28%;
+  bottom: 16%;
+  width: clamp(90px, 10vw, 150px);
+  aspect-ratio: 1;
+  animation-duration: 24s;
+  opacity: 0.6;
+}
+
+.hero-shard-c {
+  left: 7%;
+  bottom: 20%;
+  width: clamp(70px, 8vw, 125px);
+  aspect-ratio: 0.82;
+  animation-duration: 21s;
+  opacity: 0.44;
+}
+
+@keyframes mineral-drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(14px, -18px, 0) rotate(5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-shard {
+    animation: none;
+  }
+}

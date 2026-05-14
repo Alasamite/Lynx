@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
 import Image from "next/image"
@@ -291,16 +291,16 @@ export default function HomePage() {
           <p className="text-xs uppercase tracking-[0.28em] text-lynx-stone">{t.hero.eyebrow}</p>
           <h1 className="mt-4 max-w-4xl text-5xl font-bold uppercase tracking-normal md:text-7xl">{t.hero.value}</h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-lynx-chalk/82">{t.hero.line}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <button onClick={() => document.getElementById("shop")?.scrollIntoView({ behavior: "smooth" })} className="bg-lynx-forest px-6 py-3 text-xs uppercase tracking-wider">{t.hero.shop}</button>
-            <button onClick={() => document.getElementById("brand")?.scrollIntoView({ behavior: "smooth" })} className="border border-lynx-granite px-6 py-3 text-xs uppercase tracking-wider">{t.hero.brand}</button>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <button onClick={() => document.getElementById("shop")?.scrollIntoView({ behavior: "smooth" })} className="bg-lynx-forest px-7 py-4 text-xs font-medium uppercase tracking-wider transition-all duration-200 hover:bg-[#174936] hover:shadow-lg hover:shadow-lynx-forest/25">{t.hero.shop}</button>
+            <button onClick={() => document.getElementById("brand")?.scrollIntoView({ behavior: "smooth" })} className="border border-lynx-granite px-7 py-4 text-xs font-medium uppercase tracking-wider transition-all duration-200 hover:border-lynx-stone hover:bg-lynx-charcoal/50">{t.hero.brand}</button>
           </div>
         </div>
       </section>
       <InfoSections t={t} />
       <ShopSection t={t} money={(amount) => money.format(amount)} filteredProducts={filteredProducts} query={query} setQuery={setQuery} category={category} setCategory={setCategory} size={size} setSize={setSize} stockFilter={stockFilter} setStockFilter={setStockFilter} sort={sort} setSort={setSort} onView={(product) => { setSelectedProduct(product); setProductQty(1) }} onAdd={addToCart} onBuy={(product) => { addToCart(product); setCheckoutOpen(true); setCheckoutStep("customer") }} />
       <CartPanel cart={cart} t={t} money={(amount) => money.format(amount)} totals={totals} discount={discount} discountInput={discountInput} discountError={discountError} setDiscountInput={setDiscountInput} applyDiscount={applyDiscount} removeDiscount={removeDiscount} updateQty={updateQty} removeItem={removeItem} openCheckout={() => { setCheckoutOpen(true); setCheckoutStep("customer") }} />
-      <FormsSection t={t} quote={quote} setQuote={setQuote} contact={contact} setContact={setContact} cart={cart} />
+      <FormsSection t={t} quote={quote} setQuote={setQuote} contact={contact} setContact={setContact} cart={cart} quoteSent={quoteSent} quoteSending={quoteSending} submitQuote={submitQuote} contactSent={contactSent} contactSending={contactSending} submitContact={submitContact} quoteErrors={quoteErrors} contactErrors={contactErrors} />
       <Footer t={t} />
       {selectedProduct && <ProductModal product={selectedProduct} t={t} money={(amount) => money.format(amount)} qty={productQty} setQty={setProductQty} onClose={() => setSelectedProduct(null)} onAdd={() => addToCart(selectedProduct, productQty)} onBuy={() => { addToCart(selectedProduct, productQty); setSelectedProduct(null); setCheckoutOpen(true); setCheckoutStep("customer") }} onRelated={(product) => { setSelectedProduct(product); setProductQty(1) }} />}
       {cartOpen && <CartDrawer cart={cart} t={t} money={(amount) => money.format(amount)} totals={totals} discount={discount} discountInput={discountInput} discountError={discountError} setDiscountInput={setDiscountInput} applyDiscount={applyDiscount} removeDiscount={removeDiscount} updateQty={updateQty} removeItem={removeItem} onClose={() => setCartOpen(false)} onCheckout={() => { setCartOpen(false); setCheckoutOpen(true); setCheckoutStep("customer") }} />}
@@ -329,7 +329,50 @@ function PremiumHeroField() {
 
 function Header({ t, locale, setLocale, mobileOpen, setMobileOpen, cartCount, openCart }: { t: Copy; locale: Locale; setLocale: (locale: Locale) => void; mobileOpen: boolean; setMobileOpen: (value: boolean) => void; cartCount: number; openCart: () => void }) {
   const nav = [["shop", t.nav.shop], ["collection", t.nav.collection], ["brand", t.nav.brand], ["b2b", t.nav.b2b], ["support", t.nav.support]]
-  return <header className="fixed inset-x-0 top-0 z-40 border-b border-lynx-graphite bg-lynx-black/92 backdrop-blur"><div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4"><a href="#top" className="flex items-center gap-3" aria-label="Lynx Climbing home"><Logo variant="symbol" size="mark" clickable={false} /><span className="text-sm font-semibold uppercase tracking-[0.22em] text-lynx-chalk">Lynx</span></a><nav className="hidden items-center gap-6 text-xs uppercase tracking-wider md:flex">{nav.map(([id, label]) => <a key={id} href={`#${id}`} className="text-lynx-granite hover:text-lynx-chalk">{label}</a>)}</nav><div className="hidden items-center gap-3 md:flex"><LanguageSelect locale={locale} setLocale={setLocale} /><button onClick={openCart} className="relative border border-lynx-graphite p-3 hover:border-lynx-stone" aria-label={t.nav.cart}><ShoppingBag className="h-4 w-4" />{cartCount > 0 && <span className="absolute -right-2 -top-2 min-w-5 rounded-full bg-lynx-stone px-1 text-center text-[10px] text-lynx-black">{cartCount}</span>}</button></div><button onClick={() => setMobileOpen(true)} className="md:hidden" aria-label={t.nav.menu}><Menu /></button></div>{mobileOpen && <div className="border-t border-lynx-graphite bg-lynx-black p-4 md:hidden"><div className="mb-4 flex justify-between"><LanguageSelect locale={locale} setLocale={setLocale} /><button onClick={() => setMobileOpen(false)} aria-label={t.nav.close}><X /></button></div>{nav.map(([id, label]) => <a key={id} href={`#${id}`} onClick={() => setMobileOpen(false)} className="block border-b border-lynx-graphite py-3 text-sm uppercase tracking-wider">{label}</a>)}<button onClick={() => { setMobileOpen(false); openCart() }} className="mt-4 flex w-full items-center justify-between border border-lynx-graphite p-3 text-sm uppercase tracking-wider"><span>{t.nav.cart}</span><span>{cartCount}</span></button></div>}</header>
+  return (
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-lynx-graphite bg-lynx-black/95 backdrop-blur-sm">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4">
+        <a href="#top" className="group flex items-center gap-3" aria-label="Lynx Climbing home">
+          <span className="relative block h-11 w-11 shrink-0 transition-transform duration-200 group-hover:scale-105">
+            <Image src="/images/lynx-logo_no_letters.png" alt="Lynx Climbing" fill className="object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]" sizes="44px" />
+          </span>
+          <span className="hidden flex-col sm:flex">
+            <span className="text-sm font-bold uppercase tracking-[0.24em] text-lynx-chalk">Lynx</span>
+            <span className="text-[10px] font-medium uppercase tracking-[0.32em] text-lynx-granite">Climbing</span>
+          </span>
+          <span className="text-sm font-bold uppercase tracking-[0.24em] text-lynx-chalk sm:hidden">Lynx</span>
+        </a>
+        <nav className="hidden items-center gap-6 text-xs font-medium uppercase tracking-wider lg:flex">
+          {nav.map(([id, label]) => (
+            <a key={id} href={`#${id}`} className="relative text-lynx-granite transition-colors hover:text-lynx-chalk after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-lynx-stone after:transition-all hover:after:w-full">{label}</a>
+          ))}
+        </nav>
+        <div className="hidden items-center gap-4 md:flex">
+          <LanguageSelect locale={locale} setLocale={setLocale} />
+          <button onClick={openCart} className="relative border border-lynx-graphite p-3 transition-colors hover:border-lynx-stone hover:bg-lynx-charcoal" aria-label={t.nav.cart}>
+            <ShoppingBag className="h-4 w-4" />
+            {cartCount > 0 && <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-lynx-stone px-1 text-[10px] font-semibold text-lynx-black">{cartCount}</span>}
+          </button>
+        </div>
+        <button onClick={() => setMobileOpen(true)} className="p-2 md:hidden" aria-label={t.nav.menu}><Menu className="h-6 w-6" /></button>
+      </div>
+      {mobileOpen && (
+        <div className="border-t border-lynx-graphite bg-lynx-black p-4 md:hidden">
+          <div className="mb-4 flex items-center justify-between">
+            <LanguageSelect locale={locale} setLocale={setLocale} />
+            <button onClick={() => setMobileOpen(false)} className="p-2" aria-label={t.nav.close}><X className="h-5 w-5" /></button>
+          </div>
+          {nav.map(([id, label]) => (
+            <a key={id} href={`#${id}`} onClick={() => setMobileOpen(false)} className="block border-b border-lynx-graphite py-4 text-sm font-medium uppercase tracking-wider transition-colors hover:text-lynx-stone">{label}</a>
+          ))}
+          <button onClick={() => { setMobileOpen(false); openCart() }} className="mt-4 flex w-full items-center justify-between border border-lynx-graphite p-4 text-sm font-medium uppercase tracking-wider transition-colors hover:border-lynx-stone hover:bg-lynx-charcoal">
+            <span>{t.nav.cart}</span>
+            <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-lynx-stone text-xs text-lynx-black">{cartCount}</span>
+          </button>
+        </div>
+      )}
+    </header>
+  )
 }
 
 function LanguageSelect({ locale, setLocale }: { locale: Locale; setLocale: (locale: Locale) => void }) {
@@ -465,10 +508,122 @@ function TotalsView({ t, money, totals }: { t: Copy; money: (amount: number) => 
   return <div className="space-y-2 text-sm"><div className="flex justify-between"><span>{t.cart.subtotal}</span><span>{money(totals.subtotal)}</span></div><div className="flex justify-between"><span>{t.cart.discount}</span><span>-{money(totals.discount)}</span></div><div className="flex justify-between"><span>{t.cart.vat}</span><span>{money(totals.vat)}</span></div><div className="flex justify-between"><span>{t.cart.shipping}</span><span>{money(totals.shipping)}</span></div><div className="flex justify-between border-t border-lynx-graphite pt-3 text-lg font-semibold"><span>{t.cart.total}</span><span>{money(totals.total)}</span></div></div>
 }
 
-function FormsSection(props: { t: Copy; quote: QuoteInfo; setQuote: React.Dispatch<React.SetStateAction<QuoteInfo>>; contact: ContactInfo; setContact: React.Dispatch<React.SetStateAction<ContactInfo>>; cart: CartItem[] }) {
-  const { t, quote, setQuote, contact, setContact, cart } = props
+function FormsSection(props: { t: Copy; quote: QuoteInfo; setQuote: React.Dispatch<React.SetStateAction<QuoteInfo>>; contact: ContactInfo; setContact: React.Dispatch<React.SetStateAction<ContactInfo>>; cart: CartItem[]; quoteSent: boolean; quoteSending: boolean; submitQuote: () => void; contactSent: boolean; contactSending: boolean; submitContact: () => void; quoteErrors: Record<string, string>; contactErrors: Record<string, string> }) {
+  const { t, quote, setQuote, contact, setContact, cart, quoteSent, quoteSending, submitQuote, contactSent, contactSending, submitContact, quoteErrors, contactErrors } = props
   const cartText = quote.includeCart ? cart.map((item) => { const product = getProductById(item.productId); return product ? `${product.sku} x ${item.qty}` : `${item.productId} x ${item.qty}` }).join(", ") : ""
-  return <section id="b2b" className="border-b border-lynx-graphite py-16"><div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-2"><div><h2 className="text-3xl font-bold uppercase tracking-normal">{t.sections.b2bTitle}</h2><p className="mt-4 text-lynx-granite">{t.sections.b2bText}</p><form action="https://api.web3forms.com/submit" method="POST" className="mt-6 grid gap-4 md:grid-cols-2"><input type="hidden" name="access_key" value="ae746b99-edb8-455c-973e-7b14b55184f3" /><input type="hidden" name="subject" value="Lynx Climbing B2B Quote Request" /><input type="hidden" name="from_name" value="Lynx Climbing Website" /><input type="hidden" name="cart_items" value={cartText} /><Fields fields={[["name", t.b2b.name, quote.name, "text", "name"], ["email", t.b2b.email, quote.email, "email", "email"], ["company", t.b2b.company, quote.company, "text", "company"], ["country", t.b2b.country, quote.country, "text", "country"], ["orderType", t.b2b.orderType, quote.orderType, "text", "order_type"], ["quantity", t.b2b.quantity, quote.quantity, "number", "estimated_quantity"], ["categories", t.b2b.categories, quote.categories, "text", "product_categories"]]} errors={{}} onChange={(key, value) => setQuote((current) => ({ ...current, [key]: value }))} /><label className="text-sm text-lynx-granite md:col-span-2">{t.b2b.message}<textarea required name="message" value={quote.message} onChange={(event) => setQuote((current) => ({ ...current, message: event.target.value }))} className="mt-2 min-h-28 w-full bg-lynx-charcoal p-3 text-lynx-chalk outline-none ring-1 ring-lynx-graphite" /></label><label className="flex items-center gap-3 text-sm text-lynx-granite md:col-span-2"><input type="checkbox" checked={quote.includeCart} onChange={(event) => setQuote((current) => ({ ...current, includeCart: event.target.checked }))} />{t.b2b.includeCart} ({cart.length})</label><button type="submit" className="bg-lynx-forest px-5 py-3 text-xs uppercase tracking-wider hover:bg-[#174936] md:col-span-2">{t.b2b.submit}</button></form></div><div id="support"><h2 className="text-3xl font-bold uppercase tracking-normal">{t.sections.supportTitle}</h2><p className="mt-4 text-lynx-granite">{t.sections.supportText}</p><form action="https://api.web3forms.com/submit" method="POST" className="mt-6 grid gap-4 md:grid-cols-2"><input type="hidden" name="access_key" value="ae746b99-edb8-455c-973e-7b14b55184f3" /><input type="hidden" name="subject" value="Lynx Climbing Contact Form" /><input type="hidden" name="from_name" value="Lynx Climbing Website" /><Fields fields={[["name", t.b2b.name, contact.name, "text", "name"], ["email", t.b2b.email, contact.email, "email", "email"]]} errors={{}} onChange={(key, value) => setContact((current) => ({ ...current, [key]: value }))} /><label className="text-sm text-lynx-granite md:col-span-2">{t.b2b.message}<textarea required name="message" value={contact.message} onChange={(event) => setContact((current) => ({ ...current, message: event.target.value }))} className="mt-2 min-h-28 w-full bg-lynx-charcoal p-3 text-lynx-chalk outline-none ring-1 ring-lynx-graphite" /></label><button type="submit" className="bg-lynx-forest px-5 py-3 text-xs uppercase tracking-wider hover:bg-[#174936] md:col-span-2"><Mail className="mr-2 inline h-4 w-4" />{t.sections.supportTitle}</button></form></div></div></section>
+  return (
+    <>
+      <section id="b2b" className="border-b border-lynx-graphite py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-3xl font-bold uppercase tracking-normal">{t.sections.b2bTitle}</h2>
+          <p className="mt-4 max-w-3xl text-lynx-granite">{t.sections.b2bText}</p>
+          {quoteSent ? (
+            <Sent t={t} />
+          ) : (
+            <form onSubmit={(e) => { e.preventDefault(); submitQuote() }} className="mt-8 grid gap-4 md:grid-cols-2">
+              <Fields 
+                fields={[
+                  ["name", t.b2b.name, quote.name, "text", "name"], 
+                  ["email", t.b2b.email, quote.email, "email", "email"], 
+                  ["company", t.b2b.company, quote.company, "text", "company"], 
+                  ["country", t.b2b.country, quote.country, "text", "country"], 
+                  ["orderType", t.b2b.orderType, quote.orderType, "text", "order_type"], 
+                  ["quantity", t.b2b.quantity, quote.quantity, "number", "estimated_quantity"], 
+                  ["categories", t.b2b.categories, quote.categories, "text", "product_categories"]
+                ]} 
+                errors={quoteErrors} 
+                onChange={(key, value) => setQuote((current) => ({ ...current, [key]: value }))} 
+              />
+              <label className="text-sm text-lynx-granite md:col-span-2">
+                {t.b2b.message}
+                <textarea 
+                  required 
+                  name="message" 
+                  value={quote.message} 
+                  onChange={(event) => setQuote((current) => ({ ...current, message: event.target.value }))} 
+                  className="mt-2 min-h-28 w-full bg-lynx-charcoal p-3 text-lynx-chalk outline-none ring-1 ring-lynx-graphite focus:ring-lynx-granite" 
+                />
+                {quoteErrors.message && <span className="mt-1 block text-xs text-red-400">{quoteErrors.message}</span>}
+              </label>
+              <label className="flex items-center gap-3 text-sm text-lynx-granite md:col-span-2">
+                <input 
+                  type="checkbox" 
+                  checked={quote.includeCart} 
+                  onChange={(event) => setQuote((current) => ({ ...current, includeCart: event.target.checked }))} 
+                  className="h-4 w-4 accent-lynx-forest"
+                />
+                {t.b2b.includeCart} ({cart.length})
+              </label>
+              {quote.includeCart && cartText && (
+                <input type="hidden" name="cart_items" value={cartText} />
+              )}
+              <button 
+                type="submit" 
+                disabled={quoteSending} 
+                className="bg-lynx-forest px-5 py-3 text-xs uppercase tracking-wider hover:bg-[#174936] disabled:opacity-60 md:col-span-2"
+              >
+                {quoteSending ? t.b2b.sending : t.b2b.submit}
+              </button>
+            </form>
+          )}
+        </div>
+      </section>
+      <section id="support" className="border-b border-lynx-graphite py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-3xl font-bold uppercase tracking-normal">{t.sections.supportTitle}</h2>
+          <p className="mt-4 max-w-3xl text-lynx-granite">{t.sections.supportText}</p>
+          {contactSent ? (
+            <Sent t={t} />
+          ) : (
+            <form onSubmit={(e) => { e.preventDefault(); submitContact() }} className="mt-8 grid max-w-xl gap-4">
+              <label className="text-sm text-lynx-granite">
+                {t.b2b.name}
+                <input 
+                  type="text" 
+                  name="name"
+                  required 
+                  value={contact.name} 
+                  onChange={(event) => setContact((current) => ({ ...current, name: event.target.value }))} 
+                  className="mt-2 h-11 w-full bg-lynx-charcoal px-3 text-lynx-chalk outline-none ring-1 ring-lynx-graphite focus:ring-lynx-granite" 
+                />
+                {contactErrors.name && <span className="mt-1 block text-xs text-red-400">{contactErrors.name}</span>}
+              </label>
+              <label className="text-sm text-lynx-granite">
+                {t.b2b.email}
+                <input 
+                  type="email" 
+                  name="email"
+                  required 
+                  value={contact.email} 
+                  onChange={(event) => setContact((current) => ({ ...current, email: event.target.value }))} 
+                  className="mt-2 h-11 w-full bg-lynx-charcoal px-3 text-lynx-chalk outline-none ring-1 ring-lynx-graphite focus:ring-lynx-granite" 
+                />
+                {contactErrors.email && <span className="mt-1 block text-xs text-red-400">{contactErrors.email}</span>}
+              </label>
+              <label className="text-sm text-lynx-granite">
+                {t.b2b.message}
+                <textarea 
+                  name="message"
+                  required 
+                  value={contact.message} 
+                  onChange={(event) => setContact((current) => ({ ...current, message: event.target.value }))} 
+                  className="mt-2 min-h-28 w-full bg-lynx-charcoal p-3 text-lynx-chalk outline-none ring-1 ring-lynx-graphite focus:ring-lynx-granite" 
+                />
+                {contactErrors.message && <span className="mt-1 block text-xs text-red-400">{contactErrors.message}</span>}
+              </label>
+              <button 
+                type="submit" 
+                disabled={contactSending} 
+                className="bg-lynx-forest px-5 py-3 text-xs uppercase tracking-wider hover:bg-[#174936] disabled:opacity-60"
+              >
+                {contactSending ? t.b2b.sending : t.b2b.submit}
+              </button>
+            </form>
+          )}
+        </div>
+      </section>
+    </>
+  )
 }
 
 function Sent({ t }: { t: Copy }) {
